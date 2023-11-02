@@ -74,13 +74,10 @@ def reduce_tree(func, tree, acc):
         children_not_empty_dir = list(filter(fs.get_children, filter(fs.is_directory, children)))
         print('children_not_empty_dir =', children_not_empty_dir, 'len =', len(children_not_empty_dir))
         if children_not_empty_dir:
-            result = reduce(lambda child: reduce_tree(func, child, res), children_not_empty_dir, res)
+            result = reduce(lambda child: reduce_tree(func, child, acc), children_not_empty_dir, res)
             return result
         return res
 
-
 # print(reduce_tree(inner, tree))
-
 # print(reduce(lambda _, acc: acc + 101, [11, 21, 31, 100], 10))
-
 print(reduce_tree(lambda acc, _: acc + 1, tree_, 0))

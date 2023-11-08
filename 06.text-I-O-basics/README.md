@@ -60,3 +60,29 @@ list(os.scandir('.'))
 https://ru.hexlet.io/courses/python-trees/lessons/manipulations/theory_unit
 
 
+**f_transform_letter.py**
+
+Реализуйте функцию transform(input_file, output_file, rules), которая принимает на вход путь до текстового файла, путь по которому нужно записать результат и обрабатывает текст согласно словарю rules следующим образом:
+
+word_min_len - отфильтровывает слова меньше минимальной длины
+censored_words - список слов, которые нужно удалить из текста
+capital_letters - список букв, которые нужно привести к заглавным, если слово на них начинается
+The Python language was not named after a long snake but after the British comedy show Monty Python Flying Circus
+rules = {
+    'word_min_len': 3,
+    'censored_words': ['language', 'show'],
+    'capital_letters': ['l', 'a'],
+}
+ 
+transform('python.txt', 'out.txt', rules=rules)
+print(open('out.txt').read())
+ 
+# => The Python was not named After Long snake but After the British comedy Monty Python Flying Circus
+Если в результате преобразования получилась пустая строка, то ее не нужно записывать в выходной файл.
+
+Подсказки
+Используйте потоковую обработку
+Каждое правило трансформера можно описать отдельной функцией и в итоговой собрать пайплайн обработки
+
+
+

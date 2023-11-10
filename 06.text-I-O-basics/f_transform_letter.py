@@ -8,22 +8,26 @@ def replace_capital_letter(word):
     return word
 def transform(input_file, output_file, rules):
     in_file = open(input_file)
-    for data in in_file:
-        data = in_file.read()
-        words_list = data.split()
+    out_file = open(output_file, "w")
+    for line in in_file:
+        # data = in_file.readline()
+        # print(data, ' - data')
+        print(line, ' - line')
+        words_list = line.split()
+        print(words_list, ' - words_list')
         out_list = list(map(replace_capital_letter, delete_censored_words(filter_min_len(words_list))))
-        if out_list:
-            out_file = open(output_file, "w")
-            out_file.write(' '.join(out_list))
-            out_file.close()
+        print(out_list, ' - out_list')
+        out_file.write(' '.join(out_list))
     in_file.close()
+    out_file.close()
+
 
 
 
 rules = {
     'word_min_len': 3,
     'censored_words': ['language', 'show'],
-    'capital_letters': ['l', 'a'],
+    'capital_letters': ['l', 'a', 'b'],
 }
 transform('python.txt', 'out.txt', rules=rules)
 print(open('out.txt').read())

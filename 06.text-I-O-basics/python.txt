@@ -1,1 +1,17 @@
-'Beautiful than ugly\n'\n 'Explicit than implicit\n'\n 'Simple than Complex\n'\n 'Complex than Complicated\n'\n 'Readability Counts\n'\n "Special Cases aren't special enough break the rules\n"\n 'Although practicality beats purity\n'\n 'Errors should Never silently\n'\n 'Unless explicitly silenced\n'\n 'the face ambiguity refuse the temptation guess\n'\n 'There should one and preferably only one obvious way\n'\n "Although that way may Not obvious first unless you're Dutch\n"\n 'Now than Never\n'\n 'Although Never often than right Now\n'\n "the implementation hard explain it's bad idea\n"\n 'the implementation easy explain may good idea\n'\n "Namespaces are one honking great idea let's more those\n") == ('Beautiful than ugly Explicit than implicit Simple than Complex Complex than '\n "Complicated Readability Counts Special Cases aren't special enough break "\n 'rules Although practicality beats purity Errors should Never silently Unless '\n 'explicitly silenced face ambiguity refuse temptation guess There should '\n "preferably only obvious Although that obvious first unless you're Dutch than "\n "Never Although Never often than right implementation hard explain it's idea "\n "implementation easy explain good idea Namespaces honking great idea let's "\n 'more thos')
+Beautiful is better than ugly
+Explicit is better than implicit language
+Simple is better than complex
+Complex is better than complicated show
+Readability counts
+Special cases aren't special enough to break the rules
+Although practicality beats purity
+Errors should never pass silently
+Unless explicitly silenced
+In the face of ambiguity refuse the temptation to guess
+There should be one and preferably only one obvious way to do it
+Although that way may not be obvious at first unless you're Dutch
+Now is better than never
+Although never is often better than right now
+If the implementation is hard to explain it's a bad idea
+If the
+Namespaces are one honking great idea let's do more of those

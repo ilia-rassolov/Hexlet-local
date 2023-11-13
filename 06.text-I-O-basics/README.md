@@ -85,4 +85,51 @@ print(open('out.txt').read())
 Каждое правило трансформера можно описать отдельной функцией и в итоговой собрать пайплайн обработки
 
 
+**g_merge(file1, file2, out)**
+
+В этом упражнении вам предстоит реализовать функцию merge(file1, file2, out), 
+которая мержит (совмещает) два текстовых файла file1 и file2 и записывает результат по 
+указаному пути out.
+
+В случае, если в файлах не совпадают строки, то в нужно:
+
+вывести строки первого файла, отметив их как >>>file1>>>
+вывести разделитель =====
+вывести строки второго, отметив их как <<<file2<<<
+Например,
+
+cat file1.txt
+ 
+Hello from Hexlet
+Python is awesome
+Javascript is not about coffee
+Use context managers
+ 
+cat file2.txt
+ 
+Hello from Hexlet
+Python is a snake
+Javascript is a language
+Use context managers
+
+merge('file1.txt', 'file2.txt', 'out.txt')
+
+cat out.txt
+ 
+Hello from Hexlet
+>>>file1>>>
+Python is awesome
+Javascript is not about coffee
+=====
+Python is a snake
+Javascript is a language
+<<<file2<<<
+Use context managers
+ 
+Подсказки
+Используйте контекстные менеджеры для управления открытием и закрытием файлов
+Для упрощения предположим, что файлы имеют одинаковое количество строк
+
+
+
 

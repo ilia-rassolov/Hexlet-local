@@ -1,14 +1,12 @@
 Hello from Hexlet
-'>>>file1>>>', '
+'>>>file1>>>
 ', Python is awesome
-, '
-', '=====', '
+, '=====
 '. Python is a snake
-, '>>>file2>>>', '
-''>>>file1>>>', '
+, '>>>file2>>>
+''>>>file1>>>
 ', Javascript is not about coffee
-, '
-', '=====', '
+, '=====
 '. Javascript is a language
-, '>>>file2>>>', '
+, '>>>file2>>>
 'Use context managers

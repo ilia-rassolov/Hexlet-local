@@ -1,4 +1,6 @@
 Hello from Hexlet
-Python is a snake
-Javascript is a language
+Python is awesome
+Javascript is not about coffee
 Use context managers
+Javascript is a language2
+Python is a snake2

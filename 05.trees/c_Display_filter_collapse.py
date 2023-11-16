@@ -10,6 +10,7 @@ def to_upper(node):
       return fs.mkfile(name.upper(), new_meta)
     return fs.mkdir(name.upper(), fs.get_children(node), new_meta)
 
+
 def map_tree(func, tree):
     if fs.is_file(tree):
         return func(tree)
@@ -20,10 +21,9 @@ def map_tree(func, tree):
     return fs.mkdir(fs.get_name(new_tree), new_children, new_meta)
 
 
-
 tree_ = fs.mkdir('/', [
 fs.mkdir('empty', []),
-fs.mkdir('first_1', [fs.mkdir('first_inner_12',[
+fs.mkdir('first_1', [fs.mkdir('first_inner_12', [
     fs.mkfile('solution1.py', meta={'size': 12},),
     fs.mkfile('solution11.py', meta={'size': 32})
   ])]),
@@ -44,6 +44,7 @@ fs.mkdir('first_2', [
 #  'meta': {},
 #  'type': 'directory'}
 
+
 def inner(node):
     name = fs.get_name(node)
     return '2' in name
@@ -63,21 +64,24 @@ def filter_tree(bool_func, node):
 #     for item in iterable:
 #         acc = func()
 # Подсчитываем количество узлов в дереве:
+f = lambda acc, a: acc + 1
+a = 5
+x = f(0, a)
+print(x, ' = x')
 def reduce_tree(func, tree, acc):
     print('tree =', tree)
-    if fs.is_directory(tree):
-        children = fs.get_children(tree)
-        print('children =', children)
-        print('acc =',acc)
-        res = reduce(func, children, acc)
-        print('res =', res)
-        children_not_empty_dir = list(filter(fs.get_children, filter(fs.is_directory, children)))
-        print('children_not_empty_dir =', children_not_empty_dir, 'len =', len(children_not_empty_dir))
-        if children_not_empty_dir:
-            result = reduce(lambda child: reduce_tree(func, child, acc), children_not_empty_dir, res)
-            return result
+    if fs.is_file(tree):
+        res = func(acc, tree)
         return res
+    children = fs.get_children(tree)
+    if not children:
+        res = func(acc, tree)
+        return res
+    result = reduce(lambda child: reduce_tree(func(acc, child), child, acc), children, acc)
+    return result
 
 # print(reduce_tree(inner, tree))
-# print(reduce(lambda _, acc: acc + 101, [11, 21, 31, 100], 10))
-print(reduce_tree(lambda acc, _: acc + 1, tree_, 0))
+
+
+z = lambda acc, a: acc + 1
+print(reduce_tree(z, tree_, 0))

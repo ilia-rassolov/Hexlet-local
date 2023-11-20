@@ -64,24 +64,26 @@ def filter_tree(bool_func, node):
 #     for item in iterable:
 #         acc = func()
 # Подсчитываем количество узлов в дереве:
-f = lambda acc, a: acc + 1
-a = 5
-x = f(0, a)
-print(x, ' = x')
+# f = lambda acc, _: acc + 1
+# a = [4, 3, 6, 9]
+# x = f(0, a)
+# print(x, ' = x')
+# print(reduce(f, a, 0), ' = reduce')
 def reduce_tree(func, tree, acc):
     print('tree =', tree)
     if fs.is_file(tree):
-        res = func(acc, tree)
-        return res
+        return func(tree, acc)
     children = fs.get_children(tree)
     if not children:
-        res = func(acc, tree)
+        res = func(tree, acc)
+        print('res empt-dir = ', res)
         return res
-    result = reduce(lambda child: reduce_tree(func(acc, child), child, acc), children, acc)
+
+    result = reduce(lambda _, child: reduce_tree(func, child, acc), children, acc)
     return result
 
 # print(reduce_tree(inner, tree))
 
 
-z = lambda acc, a: acc + 1
-print(reduce_tree(z, tree_, 0))
+
+print(reduce_tree(lambda _, acc: acc + 1, tree_, 0))

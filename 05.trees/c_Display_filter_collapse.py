@@ -72,15 +72,28 @@ def filter_tree(bool_func, node):
 def reduce_tree(func, tree, acc):
     print('tree =', tree)
     if fs.is_file(tree):
+        print('res_file = ', func(tree, acc))
         return func(tree, acc)
     children = fs.get_children(tree)
+    print('children = ', children)
+
     if not children:
         res = func(tree, acc)
         print('res empt-dir = ', res)
         return res
-
-    result = reduce(lambda _, child: reduce_tree(func, child, acc), children, acc)
+    result = acc
+    for child in children:
+        res = reduce_tree(func, child, result)
+        if fs.is_directory(child):
+            if fs.get_children(child):
+                result = func(child, res)
+        result = res
+        print('result = ', result)
     return result
+
+
+    # result = reduce(lambda _, child: reduce_tree(func, child, acc), children, acc)
+    # return result
 
 # print(reduce_tree(inner, tree))
 

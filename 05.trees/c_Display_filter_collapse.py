@@ -3,14 +3,6 @@ import copy
 from functools import reduce
 
 
-def to_upper(node):
-    name = fs.get_name(node)
-    new_meta = copy.deepcopy(fs.get_meta(node))
-    if fs.is_file(node):
-      return fs.mkfile(name.upper(), new_meta)
-    return fs.mkdir(name.upper(), fs.get_children(node), new_meta)
-
-
 def map_tree(func, tree):
     if fs.is_file(tree):
         return func(tree)
@@ -45,11 +37,6 @@ fs.mkdir('first_2', [
 #  'type': 'directory'}
 
 
-def inner(node):
-    name = fs.get_name(node)
-    return '2' in name
-
-
 def filter_tree(bool_func, node):
     children = fs.get_children(node)
     new_meta = copy.deepcopy(fs.get_meta(node))
@@ -63,31 +50,22 @@ def filter_tree(bool_func, node):
 #     acc = initial
 #     for item in iterable:
 #         acc = func()
-# Подсчитываем количество узлов в дереве:
-# f = lambda acc, _: acc + 1
-# a = [4, 3, 6, 9]
-# x = f(0, a)
-# print(x, ' = x')
-# print(reduce(f, a, 0), ' = reduce')
-def reduce_tree(func, tree, acc):
+
+
+def reduce_tree(func, tree, initial):
     print('tree =', tree)
     if fs.is_file(tree):
-        print('res_file = ', func(tree, acc))
-        return func(tree, acc)
+        print('acc_file = ', func(tree, initial))
+        return func(tree, initial)
     children = fs.get_children(tree)
     print('children = ', children)
-
     if not children:
-        res = func(tree, acc)
-        print('res empt-dir = ', res)
-        return res
-    result = acc
+        print('acc empt-dir = ', func(tree, initial))
+        return func(tree, initial)
+    result = func(tree, initial)
     for child in children:
-        res = reduce_tree(func, child, result)
-        if fs.is_directory(child):
-            if fs.get_children(child):
-                result = func(child, res)
-        result = res
+        acc = reduce_tree(func, child, result)
+        result = acc
         print('result = ', result)
     return result
 

@@ -414,4 +414,46 @@ import os
 from hexlet.fs import flatten, get_children, get_name, is_file
 
 
-****
+**o_route_between_cities**
+
+Реализуйте функцию build_itinerary(), которая выстраивает маршрут между городами.
+
+Функция принимает на вход 3 аргумента:
+
+дерево городов
+город старта
+город окончания маршрута
+и возвращает список городов, выстроенных в том же порядке, в котором они находятся на пути следования по маршруту.
+
+tree = ['Moscow', [
+    ['Smolensk'],
+    ['Yaroslavl'],
+    ['Voronezh', [
+        ['Liski'],
+        ['Boguchar'],
+        ['Kursk', [
+            ['Belgorod', [
+                ['Borisovka'],
+            ]],
+            ['Kurchatov'],
+        ]],
+    ]],
+    ['Ivanovo', [
+        ['Kostroma'], ['Kineshma'],
+    ]],
+    ['Vladimir'],
+    ['Tver', [
+        ['Klin'], ['Dubna'], ['Rzhev'],
+    ]],
+]]
+
+build_itinerary(tree, 'Dubna', 'Kostroma')
+# ['Dubna', 'Tver', 'Moscow', 'Ivanovo', 'Kostroma']
+
+build_itinerary(tree, 'Borisovka', 'Kurchatov')
+# ['Borisovka', 'Belgorod', 'Kursk', 'Kurchatov']
+Подсказки
+Работа с иерархическими структурами данных
+Используйте возможности модулей itertools и functools из стандартной библиотеки
+
+

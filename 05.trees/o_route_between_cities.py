@@ -1,40 +1,46 @@
-from c_Display_filter_collapse import map_tree
+def make_dict(tree_d):     # представление дерева словарём связей - {узел: (предок, [потомки])...}
+    dictionary = {}
 
-def make_flat(tree3, dictionary, parent=None):
-    [node, branches] = tree3
-    children = []
-    dictionary[node] = (parent, children)
-    for branch in branches:
-        name = make_flat(branch, dictionary, parent=node)
-        children.append(name)
-        return node
-
-
-# def build_itinerary(tree, start_city, finish_city):
-
-    # def way_to_center(tree1, city):
-        # path = []
-        # def inner(tree2):
-        #     # path.append(tree2[0])
-        #     for item in tree2:
-        #         if isinstance(item, str):
-        #             path.append(item)
-        #             if item == city:
-        #                 break
-        #             else:
-        #                 path = []
-        #
-        #
-        #         else:
-        #             if len(item) == 1:
-        #             inner(item)
+    def inner(tree_d, parent=None):
+        if len(tree_d) == 1:
+            dictionary[tree_d[0]] = (parent, [])
+        else:
+            [node, branches] = tree_d
+            children = [branch[0] for branch in branches]
+            dictionary[node] = (parent, children)
+            for branch in branches:
+                inner(branch, node)
+    inner(tree_d)
+    return dictionary
 
 
+def make_path_city_moscow(city, tree_m):     # создать путь узел - корень (от города до Москвы)
+    dictionary = make_dict(tree_m)
+    path = [city]
+    parent = dictionary[city][0]
+    while parent:
+        path.append(parent)
+        parent = dictionary[path[-1]][0]
+    return path
 
 
+def build_itinerary(tree, start_city, finish_city):
+    path_start_city_moscow = make_path_city_moscow(start_city, tree)
+    path_moscow_finish_city = make_path_city_moscow(finish_city, tree)[::-1]
+    result = []
+    for city in path_start_city_moscow:
+        if city not in path_moscow_finish_city:
+            result.append(city)
+        else:
+            result.append(city)
+            break
+    for city in path_moscow_finish_city:
+        if city not in path_start_city_moscow:
+            result.append(city)
+    return result
 
 
-tree4 = ['Moscow', [
+tree = ['Moscow', [
         ['Smolensk'],
         ['Yaroslavl'],
         ['Voronezh', [
@@ -54,13 +60,9 @@ tree4 = ['Moscow', [
         ['Tver', [
             ['Klin'], ['Dubna'], ['Rzhev'],
         ]],
-    ]]
-print(map_tree(lambda node: node, [] if node == [_] else node), tree4)
+        ]]
 
-flat = {}
-print(make_flat(tree, flat))
-
-# build_itinerary(tree, 'Dubna', 'Kostroma')
+print(build_itinerary(tree, 'Borisovka', 'Kurchatov'))
 #     # ['Dubna', 'Tver', 'Moscow', 'Ivanovo', 'Kostroma']
 #
 # build_itinerary(tree, 'Borisovka', 'Kurchatov')

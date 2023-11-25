@@ -53,16 +53,13 @@ def filter_tree(bool_func, node):
 
 
 def reduce_tree(func, tree, initial):
+    result = func(tree, initial)
     print('tree =', tree)
     if fs.is_file(tree):
         print('acc_file = ', func(tree, initial))
-        return func(tree, initial)
+        return result
     children = fs.get_children(tree)
     print('children = ', children)
-    if not children:
-        print('acc empt-dir = ', func(tree, initial))
-        return func(tree, initial)
-    result = func(tree, initial)
     for child in children:
         acc = reduce_tree(func, child, result)
         result = acc

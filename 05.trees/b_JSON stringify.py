@@ -65,3 +65,27 @@ print(stringify(data1, '_', 3))
 # print(return_key_value('hello', 'world'))
 # print(return_dict(data))
 # print(return_key_value("hello", "world"))
+
+
+
+
+def stringify(data, replacer=' ', spaces_count=1):
+    if not isinstance(data, dict):
+        return str(replacer)*int(spaces_count) + str(value)
+    else:
+        result = '{\n'
+        for key in data:
+            result += f'    {key}: {data1_str[key]}\n'
+
+
+                if key in data2_str:
+                    if data1_str[key] == data2_str[key]:
+
+                    else:
+                        result += (f'  - {key}: {data1_str[key]}\n  + '
+                                   f'{key}: {data2_str[key]}\n')
+                else:
+                    result += f'  - {key}: {data1_str[key]}\n'
+            else:
+                result += f'  + {key}: {data2_str[key]}\n'
+        result += '}'

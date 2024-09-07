@@ -18,4 +18,4 @@ def grep(substring, pattern):
 
 
 
-print(grep('каталог', '~/PycharmProjects/HexletEx/module-2/06.text-I-O-basics/a_Global_search/*4.txt'))
+print(grep('каталог', '~/PycharmProjects/HexletEx/m-2/06.text-I-O-basics/a_Global_search/*4.txt'))

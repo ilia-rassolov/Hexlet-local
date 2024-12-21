@@ -62,8 +62,11 @@ tree = ['Moscow', [
         ]],
         ]]
 
-print(build_itinerary(tree, 'Borisovka', 'Kurchatov'))
+# print(build_itinerary(tree, 'Borisovka', 'Kurchatov'))
 #     # ['Dubna', 'Tver', 'Moscow', 'Ivanovo', 'Kostroma']
 #
 # build_itinerary(tree, 'Borisovka', 'Kurchatov')
 #     # ['Borisovka', 'Belgorod', 'Kursk', 'Kurchatov']
+
+# print(make_dict(tree))
+print(make_path_city_moscow('Kurchatov', tree))

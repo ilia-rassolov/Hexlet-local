@@ -16,9 +16,7 @@ def retry(limit=5):
                     retries += 1
                     if retries == limit:
                         raise
-
         return wrapper
-
     return inner
 
 

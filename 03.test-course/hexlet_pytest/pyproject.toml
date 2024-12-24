@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "hexlet-pytest"
+version = "0.1.0"
+description = ""
+authors = ["r i"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^8.3.4"
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

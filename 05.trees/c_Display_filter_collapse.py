@@ -30,7 +30,7 @@ fs.mkdir('first_2', [
 
 # {'name': '/',
 #  'children': [{'name': 'SRC',
-#    'children': [{'name': 'SOLUTION.PY', 'meta': {'size': 12}, 'type': 'file'}],
+#    'children': [{'name': 'SOLUTION.PY', 'meta': {'size': 12}, 'type': 'file.html'}],
 #    'meta': {},
 #    'type': 'directory'}],
 #  'meta': {},
